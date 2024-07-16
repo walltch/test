@@ -1,6 +1,6 @@
-const Reservation = require('../models/reservation');
+import Reservation from '../models/reservation.js';
 
-exports.create = async (req, res) => {
+export async function reservationController(req, res) {
   try {
     const reservation = new Reservation(req.body);
     await reservation.save();
@@ -8,4 +8,4 @@ exports.create = async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-};
+}

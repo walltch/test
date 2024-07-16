@@ -1,6 +1,6 @@
-const Member = require('../models/member');
+import Member from '../models/member.js';
 
-exports.register = async (req, res) => {
+export async function memberController(req, res) {
   try {
     const member = new Member(req.body);
     await member.save();
@@ -8,4 +8,4 @@ exports.register = async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-};
+}
