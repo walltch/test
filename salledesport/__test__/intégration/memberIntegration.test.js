@@ -1,6 +1,6 @@
-const request = require('supertest');
-const app = require('../../src/app');
-const mongoose = require('mongoose');
+import request from 'supertest';
+import app from '../../src/app.js';
+import mongoose from 'mongoose';
 
 describe('Member Integration Test', () => {
   beforeAll(async () => {

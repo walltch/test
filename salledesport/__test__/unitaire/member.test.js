@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Member = require('../../src/models/member');
+import mongoose from 'mongoose';
+import Member from '../../src/models/member.js';
 
 describe('Member Model Test', () => {
   beforeAll(async () => {

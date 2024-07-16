@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Reservation = require('../../src/models/reservation');
+import mongoose from 'mongoose';
+import Reservation from '../../src/models/reservation.js';
 
 describe('Reservation Model Test', () => {
   beforeAll(async () => {
@@ -20,7 +20,7 @@ describe('Reservation Model Test', () => {
     const savedReservation = await reservation.save();
 
     expect(savedReservation._id).toBeDefined();
-    expect(savedReservation.memberId).toBe(reservationData.memberId);
+    expect(savedReservation.memberId.toString()).toBe(reservationData.memberId.toString());
     expect(savedReservation.gym).toBe(reservationData.gym);
     expect(savedReservation.machine).toBe(reservationData.machine);
   });

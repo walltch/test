@@ -1,7 +1,7 @@
-const { Builder, By, until } = require('selenium-webdriver');
-require('chromedriver');
-const mongoose = require('mongoose');
-const Member = require('../../src/models/member');
+import { Builder, By, until } from 'selenium-webdriver';
+import 'chromedriver';
+import mongoose from 'mongoose';
+import Member from '../../src/models/member.js';
 
 describe('Member System Test', () => {
   let driver;

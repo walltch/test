@@ -1,8 +1,8 @@
-const { Builder, By, until } = require('selenium-webdriver');
-require('chromedriver');
-const mongoose = require('mongoose');
-const Member = require('../../src/models/member');
-const Reservation = require('../../src/models/reservation');
+import { Builder, By, until } from 'selenium-webdriver';
+import 'chromedriver';
+import mongoose from 'mongoose';
+import Member from '../../src/models/member.js';
+import Reservation from '../../src/models/reservation.js';
 
 describe('Reservation System Test', () => {
   let driver;

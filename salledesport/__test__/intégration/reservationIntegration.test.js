@@ -1,7 +1,7 @@
-const request = require('supertest');
-const app = require('../../src/app');
-const mongoose = require('mongoose');
-const Member = require('../../src/models/member');
+import request from 'supertest';
+import app from '../../src/app.js';
+import mongoose from 'mongoose';
+import Member from '../../src/models/member.js';
 
 describe('Reservation Integration Test', () => {
   beforeAll(async () => {
