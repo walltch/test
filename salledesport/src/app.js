@@ -1,25 +1,20 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import connectDB from './utils/database.js';
-import routes from './routes.js'
-
-dotenv.config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
 
 const app = express();
+const port = 3000;
 
-app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', routes);
 
-connectDB();
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
+}
 
-const PORT = process.env.PORT || 8000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-
+// Export app for testing
+module.exports = app;

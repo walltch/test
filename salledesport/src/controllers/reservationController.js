@@ -1,11 +1,17 @@
-import Reservation from '../models/reservation.js';
+const Reservation = require('../models/reservation');
 
-export async function reservationController(req, res) {
-  try {
-    const reservation = new Reservation(req.body);
-    await reservation.save();
-    res.status(201).send(reservation);
-  } catch (error) {
-    res.status(400).send(error);
-  }
+function validateReservation(data) {
+    if (!data.memberId || !data.gymId || !data.machines) {
+        return false;
+    }
+    return true;
 }
+
+function createReservation(memberId, gymId, machines) {
+    return Reservation.addReservation(memberId, gymId, machines);
+}
+
+module.exports = {
+    validateReservation,
+    createReservation
+};

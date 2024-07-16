@@ -1,21 +1,17 @@
-import mongoose from 'mongoose';
+let reservations = [];
 
-const reservationSchema = new mongoose.Schema({
-  memberId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Member',
-    required: true
-  },
-  gym: {
-    type: String,
-    required: true
-  },
-  machine: {
-    type: String,
-    required: true
-  }
-});
+function addReservation(memberId, gymId, machines) {
+    const newReservation = {
+        id: reservations.length + 1,
+        memberId,
+        gymId,
+        machines,
+        timestamp: new Date()
+    };
+    reservations.push(newReservation);
+    return newReservation;
+}
 
-const Reservation = mongoose.model('Reservation', reservationSchema);
-
-export default Reservation;
+module.exports = {
+    addReservation
+};

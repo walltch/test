@@ -1,11 +1,21 @@
-import Member from '../models/member.js';
+const Member = require('../models/member');
 
-export async function memberController(req, res) {
-  try {
-    const member = new Member(req.body);
-    await member.save();
-    res.status(201).send(member);
-  } catch (error) {
-    res.status(400).send(error);
-  }
+function validateMemberRegistration(data) {
+    if (!data.firstName || !data.lastName || !data.email || !data.password) {
+        return false;
+    }
+    return true;
 }
+
+function registerMember(firstName, lastName, email, password) {
+    const existingMember = Member.findMemberByEmail(email);
+    if (existingMember) {
+        throw new Error('Member with this email already exists');
+    }
+    return Member.addMember(firstName, lastName, email, password);
+}
+
+module.exports = {
+    validateMemberRegistration,
+    registerMember
+};

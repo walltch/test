@@ -1,25 +1,22 @@
-import mongoose from 'mongoose';
+let members = [];
 
-const memberSchema = new mongoose.Schema({
-  nom: {
-    type: String,
-    required: true
-  },
-  prenom: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
-});
+function addMember(firstName, lastName, email, password) {
+    const newMember = {
+        id: members.length + 1,
+        firstName,
+        lastName,
+        email,
+        password
+    };
+    members.push(newMember);
+    return newMember;
+}
 
-const Member = mongoose.model('Member', memberSchema);
+function findMemberByEmail(email) {
+    return members.find(member => member.email === email);
+}
 
-export default Member;
+module.exports = {
+    addMember,
+    findMemberByEmail
+};
