@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Confirmation</title>
+    <title>Reservation Page</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('confirmButton').addEventListener('click', function() {
+                const gym = document.getElementById('gymSelector').value;
+                const machine = document.getElementById('machineSelector').value;
+            
+                const confirmationMessage = `Reservation confirmed for Gym ${gym}, Machine ${machine}`;
+                document.getElementById('confirmationMessage').innerText = confirmationMessage;
+                event.preventDefault();
+            });
+        });
+    </script>
 </head>
 <body>
-    <h1>Reservation Confirmation</h1>
-    <p>Your reservation has been confirmed. Details:</p>
-    <ul>
-        <li>Member ID: 123</li>
-        <li>Gym ID: 1</li>
-        <li>Machines: Treadmill, Bench Press</li>
-        <li>Timestamp: 2024-07-16 10:00 AM</li>
-    </ul>
+    <h1>Reservation Page</h1>
+
+    <label for="gymSelector">Select Gym:</label>
+    <select id="gymSelector">
+        <option value="1">Gym A</option>
+        <option value="2">Gym B</option>
+        <option value="3">Gym C</option>
+    </select>
+
+    <label for="machineSelector">Select Machine:</label>
+    <select id="machineSelector">
+        <option value="101">Machine 101</option>
+        <option value="102">Machine 102</option>
+        <option value="103">Machine 103</option>
+    </select>
+
+    <button id="confirmButton">Confirm Reservation</button>
+    <div id="confirmationMessage"></div> 
 </body>
 </html>

@@ -16,6 +16,10 @@ app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'memberRegistration.html'));
 });
 
+app.get('/reservation', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'reservation.html'));
+});
+
 if (require.main === module) {
   const server = app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
